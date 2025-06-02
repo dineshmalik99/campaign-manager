@@ -13,10 +13,9 @@ public class JobRequest {
     private String campaign_id;
     private String campaign_name;
     private String campaign_description;
-    private String camoaign_message_id;
+    private String campaign_message_id;
     @NonNull
-    private LocalDateTime campaign_submit_time;
-
+    private LocalDateTime campaign_run_start_time;
     @NonNull
     private String campaign_run_status;
     @NonNull
