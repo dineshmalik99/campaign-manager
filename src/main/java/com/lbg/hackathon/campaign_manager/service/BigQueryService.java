@@ -37,19 +37,20 @@ public class BigQueryService {
         BigQuery bigquery = BigQueryOptions.getDefaultInstance().getService();
 
         TableId tableId = TableId.of(bigQueryConfigs.getProjectId(), bigQueryConfigs.getDataset(), bigQueryConfigs.getTable());
-        LocalDateTime inputTime = LocalDateTime.parse(request.getStarttime().toString());
+        LocalDateTime inputTime = LocalDateTime.parse(request.getCampaign_run_start_time().toString());
         String formatted = inputTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String campaign_id = UUID.randomUUID().toString();
         InsertAllRequest.RowToInsert row = InsertAllRequest.RowToInsert.of(
-                request.getId(),
+                campaign_id,
                 Map.of(
-                        "id", request.getId(),
-                        "name", request.getName(),
-                        "description", request.getDescription(),
-                        "message", request.getMessage(),
-                        "starttime", formatted,
-                        "timestamp", Instant.now().toString(),
-                        "status", request.getStatus().toUpperCase(),
-                        "sql_query", request.getSqlQuery()
+                        "campaign_id", campaign_id,
+                        "campaign_name", request.getCampaign_name(),
+                        "campaign_description", request.getCampaign_description(),
+                        "campaign_message_id", request.getCampaign_message_id(),
+                        "campaign_run_start_time", formatted,
+                        "campaign_submit_time", Instant.now().toString(),
+                        "campaign_run_status", request.getCampaign_run_status().toUpperCase(),
+                        "campaign_sql_query", request.getCampaign_sql_query()
                 )
         );
 
