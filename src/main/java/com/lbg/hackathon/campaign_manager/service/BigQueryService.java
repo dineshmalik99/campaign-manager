@@ -30,8 +30,8 @@ public class BigQueryService {
     }
 
     public void insertJob(JobRequest request) {
-        if (Arrays.stream(VALID_STATUSES).noneMatch(request.getStatus()::equalsIgnoreCase)) {
-            throw new IllegalArgumentException("Invalid status: " + request.getStatus());
+        if (Arrays.stream(VALID_STATUSES).noneMatch(request.getCampaign_run_status()::equalsIgnoreCase)) {
+            throw new IllegalArgumentException("Invalid status: " + request.getCampaign_run_status());
         }
 
         BigQuery bigquery = BigQueryOptions.getDefaultInstance().getService();
