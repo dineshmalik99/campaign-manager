@@ -61,7 +61,7 @@ public class CloudTaskService {
 
     public String createCloudTask(JobRequest job) {
         String parent = QueueName.of(cloudTaskConfigs.getProjectId(), cloudTaskConfigs.getLocation(), cloudTaskConfigs.getQueueId()).toString();
-        String payload = "{\"id\":\"" + job.getId() + "\"}";
+        String payload = "{\"id\":\"" + job.getCampaign_id() + "\"}";
 
         Task task = Task.newBuilder()
                 .setHttpRequest(HttpRequest.newBuilder()
