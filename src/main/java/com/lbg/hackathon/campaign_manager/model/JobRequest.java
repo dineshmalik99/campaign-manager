@@ -10,17 +10,16 @@ import java.time.LocalDateTime;
 public class JobRequest {
 
     @NonNull
-    private String id;
-    private String name;
-    private String description;
-    private String message;
+    private String campaign_id;
+    private String campaign_name;
+    private String campaign_description;
+    private String camoaign_message_id;
     @NonNull
-    private LocalDateTime starttime;
+    private LocalDateTime campaign_submit_time;
 
     @NonNull
-    private String status;
+    private String campaign_run_status;
     @NonNull
-    private String sqlQuery;
+    private String campaign_sql_query;
 
-    // Getters and Setters
 }
