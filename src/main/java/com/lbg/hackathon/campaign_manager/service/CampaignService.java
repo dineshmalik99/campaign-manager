@@ -24,11 +24,11 @@ public class CampaignService {
 
     public void handleCampaignRequest(JobRequest request) {
 
-        if (bigQueryService.getJobById(request.getId()).getTotalRows() > 0) {
+        if (bigQueryService.getJobById(request.getCampaign_id()).getTotalRows() > 0) {
             throw new IllegalStateException("Job ID already exists.");
         }
         Instant now = Instant.now();
-        if (request.getStarttime().isAfter(ChronoLocalDateTime.from(now.plusSeconds(60)))) {
+        if (request.getCampaign_run_start_time().isAfter(ChronoLocalDateTime.from(now.plusSeconds(60)))) {
             bigQueryService.insertJob(request);
             cloudTaskService.createCloudTask(request);
         } else {
